@@ -3,7 +3,7 @@ import axios from "axios";
 export function request(config) {
   //1. 创建axios实例
   const instance = axios.create({
-    baseURL: 'https://music.api.tianli0.top/',
+    baseURL: 'https://cloudmusicapi-lemon.vercel.app/',
     timeout: 5000
   })
   //2.axios拦截器

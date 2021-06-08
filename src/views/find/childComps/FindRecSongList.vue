@@ -74,6 +74,7 @@
 		background-color: #fff;
 		font-size: 0.75rem;
 		border-radius: 5px;
+		border-width: 0.0625rem;
 		border-color: #000000;
 		text-shadow: #000000;
 	}
