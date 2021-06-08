@@ -21,13 +21,12 @@
             :pull-up-load="true"
             @pullingUp="loadMore"
         >
-            
         </scroll>
 		<find-swiper :banners="banners" />
-		<find-options/>
+		<find-options :data="data"/>
 		<br /><br />
 		<hr />
-		<find-rec-song-list :playlists="playlists" />
+		<find-rec-song-list :result="result" />
 		
     </div>
 </template>
@@ -40,14 +39,15 @@
     import NavBar from "../../components/common/navbar/NavBar.vue";
     import Scroll from "../../components/common/scroll/Scroll.vue";
 
-    import { getBanner, getPlaylists } from "../../network/find.js";
+    import { getBanner, getResult, getData } from "../../network/find.js";
     export default {
         name: "Find",
         components: {
             NavBar,
             Scroll,
             getBanner,
-			getPlaylists,
+			getResult,
+			getData,
             FindSwiper,
             FindOptions,
             FindRecSongList,
@@ -55,20 +55,22 @@
         data() {
             return {
                 banners: [],
-                playlists: [],
+                result: [],
+				data: []
             };
         },
         computed: {},
         created() {
             this.getBanner();
-            this.getPlaylists();
+            this.getResult();
+			this.getData()
         },
-        activated() {
-            this.$refs.scroll.scrollTo(0, this.saveY, 0);
-        },
-        deactivated() {
-            this.saveY = this.$refs.scroll.getScrollY();
-        },
+        // activated() {
+        //     this.$refs.scroll.scrollTo(0, this.saveY, 0);
+        // },
+        // deactivated() {
+        //     this.saveY = this.$refs.scroll.getScrollY();
+        // },
         methods: {
             loadMore() {
                 // this.getHomeGoods(this.currentType)
@@ -78,11 +80,16 @@
                     this.banners = res.banners;
                 });
             },
-            getPlaylists() {
-                getPlaylists().then((res) => {
-                    this.playlists = res.playlists;
+            getResult() {
+                getResult().then((res) => {
+                    this.result = res.result;
                 });
             },
+			getData() {
+			    getData().then((res) => {
+			        this.data = res.data;
+			    });
+			},
         },
     };
 </script>

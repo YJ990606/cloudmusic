@@ -1,17 +1,17 @@
 <template>
 	<div>
-	<rec-song-list-head>
+	<rec-song-list-head class="head">
 		<h4 slot="head">{{headtext}}</h4>
-		<button slot="button">{{buttontext}}</button>
+		<a slot="button" href="">{{buttontext}}</a>
 	</rec-song-list-head>
-    <rec-song-list class="rec-songlist">
-        <rec-song-list-item
-            v-for="(item, index) in playlists"
+    <rec-song-list class="recsonglist">
+        <rec-song-list-item class="recsonglist-item"
+            v-for="(item, index) in result"
             v-bind:key="index"
         >
             <img
                 slot="item-image"
-                :src="item.coverImgUrl"
+                :src="item.picUrl"
                 alt=""
                 @load="imageLoad"
             />
@@ -37,7 +37,7 @@
         },
         props: {
 			//内容
-            playlists: {
+            result: {
                 type: Array,
                 default() {
                     return [];
@@ -63,5 +63,58 @@
 </script>
 
 <style scoped>
+	.head {
+			display: flex;
+			justify-content: space-between;
+			padding: 10px 15px ;
+	}
+	.head a{
+		width: 50px;
+		height: 20px;
+		background-color: #fff;
+		font-size: 0.75rem;
+		border-radius: 5px;
+		border-color: #000000;
+		text-shadow: #000000;
+	}
+	
+	.recsonglist {
+		overflow-x: scroll;
+		list-style: none;
+		white-space: nowrap;
+		display: flex;
+		position: relative;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+	.recsonglist::-webkit-scrollbar {
+	    display: none;
+	}
+	
+	.recsonglist-item {
+		flex: 1;
+		justify-content: space-evenly;
+	    padding: 0 10px 0;
+	    width: 100%;
+	}
+	
+	.recsonglist-item img {
+	    width: 100px;
+	    margin: 3px 0px 2px;
+		border-radius: 5%;
+	    vertical-align: middle;
+	}
+	
+	.recsonglist-item div{
+		width: 100px;
+		overflow: auto;
+		font-size: 12px;
+		font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+		text-align: center;
+	}
+	.recsonglist-item div::-webkit-scrollbar {
+	    display: none;
+	}
 </style>
 

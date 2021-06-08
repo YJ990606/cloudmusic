@@ -16,15 +16,17 @@
         padding: 0 15px 0;
         display: inline-block;
 		width: 50%;
-		height: 49px;
+		height: 54px;
         font-size: 12px;
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         text-align: center;
     }
 
     .options-item img {
-		width: 30px;
+		width: 35px;
         margin: 3px 0px 2px;
+		background-color: #e9ccd3;
+		border-radius: 50%;
         vertical-align: middle;
     }
 </style>

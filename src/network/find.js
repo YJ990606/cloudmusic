@@ -6,8 +6,14 @@ export function getBanner() {
   })
 }
 
-export function getPlaylists() {
+export function getResult() {
   return request({
-    url: '/related/playlist?id=1'
+    url: '/personalized?limit=30'
+  })
+}
+
+export function getData() {
+  return request({
+    url: '/homepage/dragon/ball'
   })
 }

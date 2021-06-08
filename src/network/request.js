@@ -3,7 +3,7 @@ import axios from "axios";
 export function request(config) {
   //1. 创建axios实例
   const instance = axios.create({
-    baseURL: 'http://127.0.0.1:3000',
+    baseURL: 'https://music.api.tianli0.top/',
     timeout: 5000
   })
   //2.axios拦截器
